@@ -1,0 +1,4 @@
+This project made in HTML, CSS and JavaScript places a random number between 1 and 650, representing the indentification number of a song in a collection made for brazillian church, called harpa cristã. Finished version 1 in 14/05/2024.
+As for features i want to add, perhaps a 'liked songs' tab would be nice, like, using JSON to store the user's 'liked songs' and displaying it on a div in the future.
+Redistribution is allowed with credit.
+  
