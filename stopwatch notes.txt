@@ -1,3 +1,0 @@
-This project, as the name says, its a simple stopwatch made in HTML, JavaScript and CSS. 
-You can distribute this as you wish, just give credit (but who will ever come across my repo  :( lol)
-I think its nice the way it is, so IT IS FINISHED. :)
