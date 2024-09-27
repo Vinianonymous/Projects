@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .time-container {
+                background-color: gainsboro;
+                font-family: Arial;
+                font-size: 20px;
+                padding: 15px;
+                width: fit-content;
+            }
+            .center {
+                margin: auto;
+                width: 50%;
+                border: none;
+                padding: 15px;
+
+            }
+            .button-div {
+                margin: 15px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            button {
+                padding: 15px;
+                font-size: 20px;
+                font-family: Arial;
+                margin-left: auto;
+                margin-right: auto;
+                border: none;
+            } button:hover {
+                cursor: pointer;
+                background-color: rgb(200, 200, 200);
+                padding: 20px;
+                font-size: 21px;
+                transition: all 0.15s;
+            } 
+        </style>
+    </head>
+
+    <body>
+        <div class="center">
+            <div id="time-container" class="time-container">0:0:0</div>
+            <div class="button-div"> 
+                <button id="start-timer">Start</button>
+                <button id="stop-timer">Stop</button>
+                <button id="reset-timer">Reset</button>
+            </div>
+        </div>
+
+        <script>
+            let intervalID;
+            let isCounting = false;
+            let time = {hours: 0, minutes: 0, seconds: 0};
+            const time_element = document.getElementById("time-container");
+            const start_button = document.getElementById("start-timer");
+            const stop_button = document.getElementById("stop-timer");
+            const reset_button = document.getElementById("reset-timer");
+
+
+            function render() {
+                time_element.textContent = `${time.hours}:${time.minutes}:${time.seconds}`;
+            }
+
+            function count() {
+                intervalID = setInterval(() => {
+                    time.seconds++;
+                    if (time.seconds == 60) {
+                        time.minutes++;
+                        time.seconds = 0;
+                    }
+                    if (time.minutes == 60) {
+                        time.hours++;
+                        time.minutes = 0;
+                    }
+                    render();
+                }, 1000)};
+
+            start_button.addEventListener('click', () => {
+                if (isCounting == false) {
+                isCounting = true;
+                    count();
+                } 
+            })    
+            
+            stop_button.addEventListener('click', () => {
+                clearInterval(intervalID);
+                isCounting = false;
+            })
+
+            reset_button.addEventListener('click', () => {
+                clearInterval(intervalID);
+                isCounting = false;
+                time.hours = 0;
+                time.minutes = 0;
+                time.seconds = 0;
+                render();
+            })
+        </script>
+    </body>
+</html>
