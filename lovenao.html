@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .love {
+                width: fit-content;
+                font-size: 20px;
+                font-family: Arial;
+                font-weight: bold;
+                border-radius: 3px;
+                padding: 15px;
+                background-color: gray;
+            }
+
+            .begin {
+                padding: 15px;
+                font: 20px;
+                width: fit-content;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="love" class="love">Te quiero 0% nao :(</div>
+        <button id="begin" class="begin">Será?</button>
+        
+
+        <script>
+            let love = 0
+            function begin() {
+                setInterval(() => {
+                    love ++;
+                    love_element.textContent = `Te quiero ${love}% Naomi <3 (TE AMOOOO)`;
+                },100)
+            }
+
+            const love_element = document.getElementById("love");
+            const begin_element = document.getElementById("begin");
+
+            begin_element.addEventListener('click', () => {
+                begin_element.textContent = "Aww :)"
+                begin();
+            })
+        </script>
+    </body>
+</html>
