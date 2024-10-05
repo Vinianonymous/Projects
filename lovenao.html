@@ -1,32 +1,74 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Te amo?</title>
         <style>
+            body {
+                background-color: rgb(140, 140, 140);
+            }
+
+            div {
+                color: white;
+                font: bold;
+                font-size: 20px;
+                background-color: #b09ad9;
+                padding: 15px;
+                border-radius: 3px;
+                margin-top: 30px;
+                width: fit-content;
+                margin: auto;
+                border: 3px;
+            }
+
             .love {
+                color: white;
                 width: fit-content;
                 font-size: 20px;
                 font-family: Arial;
                 font-weight: bold;
-                border-radius: 3px;
+                border-radius: 5px;
                 padding: 15px;
-                background-color: gray;
+                background-color: navy;
+                margin: auto;
             }
 
-            .begin {
+            button {
+                margin: auto;
                 padding: 15px;
-                font: 20px;
+                font-size: 19px;
                 width: fit-content;
+                background-color: lightblue;
+                color: white;
+                border: 3px;
+                border-radius: 4px;
+                transition: all, 1s;
+            } button:hover {
+                cursor: pointer;
+                padding: 20px;
+                border-radius: 10px;
+            } button:active {
+                background-color: lightgreen;
             }
         </style>
     </head>
 
     <body>
-        <div id="love" class="love">Te quiero 0% nao :(</div>
-        <button id="begin" class="begin">Será?</button>
-        
+            <div id="love" class="love">Te quiero 0% nao :(</div>
 
+            <div class="button_container">
+                <button id="begin" class="begin">Será?</button>
+            </div>
+            
+        
         <script>
-            let love = 0
+            //Variables Section
+            let clicked = false;
+            let love = 0;
+            let reasonsClicked = false;
+
+
+            ///Increments love counter and updates love_element values
             function begin() {
                 setInterval(() => {
                     love ++;
@@ -34,12 +76,45 @@
                 },100)
             }
 
-            const love_element = document.getElementById("love");
-            const begin_element = document.getElementById("begin");
+            function addreasons() {
+                if (reasonsClicked == false) {
+                    reasonsClicked = true;
+                    div_content = document.createElement("div");
+                    div_content.className = "reasons"
+                    text = document.createTextNode(`Porquê sos la mejor, sos única, sos mi mejor amiga.En resumen, sos VOS <3`);
+                    div_content.appendChild(text);
+                    document.body.appendChild(div_content);
+                }
+                
+            }
 
+
+            //Elements constants: 
+            const love_element  = document.getElementById("love");
+            const begin_element = document.getElementById("begin");
+            const button_container = document.querySelector(".button_container");
+           
+            //When the questioning button is pressed:
             begin_element.addEventListener('click', () => {
+                //Begins counter
                 begin_element.textContent = "Aww :)"
                 begin();
+
+                //Creates Reason button element ONLY ONCE
+                if (clicked == false) {
+                    clicked = true;
+                    x = document.createElement("BUTTON");
+                    t = document.createTextNode("Por quê?");
+                    x.className = "reason";
+                    x.append(t);
+                    button_container.appendChild(x);
+
+                    //Adds a listener for the other button and runs a function to add the reasons separately.
+                    const reason_element = document.querySelector(".reason");
+                    reason_element.addEventListener('click', ()=> {
+                        addreasons();
+                    })
+                }
             })
         </script>
     </body>
