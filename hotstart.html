@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Sorpresita</title>
+        <style>
+            body {
+                background-color: black;
+                transition: background-color 200ms;
+            } 
+
+            div {
+                font-family: Verdana;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            button {
+                align-self: center;
+                padding: 10px;
+                margin: 5px;
+                background-color: honeydew;
+                color: black;
+                border: none;
+                border-radius: 3px;
+                font-size: large;
+            } button:hover {
+                background-color: blanchedalmond;
+                cursor: pointer;
+            }
+
+        </style>
+    </head>
+
+
+    <body>
+        <div>
+            <h1 id="textshow"></h1>
+            <button id="button1">Holis gente</button>
+        </div>
+        
+
+
+
+        <script>
+            clickedAgain = false;
+
+    
+            function begin() {
+
+                if (clickedAgain == false) {
+                    document.getElementById('textshow').innerHTML = "Que crack master que sos, me encanta ser tu compañero. <3";
+
+                   setInterval(() => {
+                    
+                            red = Math.random()*256;
+                            blue = Math.random()*256;
+                            green = Math.random()*256;
+
+                            document.body.style.backgroundColor = `rgb(${red},${green},${blue})`;
+                        }, 500)   
+                    };
+                }
+        
+
+            document.getElementById('button1').addEventListener('click', begin);
+
+        </script>
+
+    </body>
+</html>
